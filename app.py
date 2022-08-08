@@ -55,7 +55,7 @@ def create_cupcake():
 @app.patch('/api/cupcakes/<int:cupcake_id>')
 def update_cupcake(cupcake_id):
     """ Update cupcake with id cupcake_id and return it.
-    
+
     Returns JSON {cupcake: {id, flavor, size, rating, image}}
     """
 
@@ -91,4 +91,6 @@ def delete_cupcake(cupcake_id):
 @app.get('/')
 def show_home_page():
     """ Display home page and new cupcake form """
+
+    return render_template("home.html")
 

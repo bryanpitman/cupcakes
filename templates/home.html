@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,14 +8,29 @@
     <title>Cupcakes</title>
     <link rel="stylesheet" href="https://unpkg.com/bootstrap/dist/css/bootstrap.css">
 </head>
+
 <body>
     <h1>Cupcakes!</h1>
 
     <ul id="cupcakes-list">
     </ul>
 
+    <form class="add-cupcake-form">
+        <div class="d-flex justify-content-center">
+            <input id="flavor" name="flavor" placeholder="Enter a flavor" class="form-control me-2" />
+
+            <input id="size" name="size" placeholder="Enter a size" class="form-control me-2" />
+
+            <input id="rating" name="rating" placeholder="Enter a rating" class="form-control me-2" />
+            <input id="image" name="image" placeholder="Optional Image" class="form-control me-2" />
+
+            <input type="submit" class="btn btn-secondary" value="Add cupcake!" />
+        </div>
+    </form>
+
     <script src="https://unpkg.com/jquery"></script>
     <script src="https://unpkg.com/axios/dist/axios.js"></script>
-    <script src="cupcakes.js"></script>
+    <script src="/static/cupcakes.js"></script>
 </body>
+
 </html>
