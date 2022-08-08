@@ -34,7 +34,7 @@ class CupcakeViewsTestCase(TestCase):
     def setUp(self):
         """Make demo data."""
 
-        Cupcake.query.delete()
+        Cupcake.query.delete() #deletes all current cupcakes
 
         # "**" means "pass this dictionary as individual named params"
         cupcake = Cupcake(**CUPCAKE_DATA)
@@ -108,3 +108,37 @@ class CupcakeViewsTestCase(TestCase):
             })
 
             self.assertEqual(Cupcake.query.count(), 2)
+
+    def test_patch_cupcake(self):
+        with app.test_client() as client:
+            url = f"/api/cupcakes/{self.cupcake.id}"
+            resp = client.patch(url,
+                                json=   {"flavor": "Strawberry",
+                                        "rating": 10})
+
+            data = resp.json
+
+            self.assertEqual(resp.status_code, 200)
+
+            self.assertEqual(data, {
+                "cupcake": {
+                    "id": self.cupcake.id,
+                    "flavor": "Strawberry",
+                    "size": "TestSize",
+                    "rating": 10,
+                    "image": "http://test.com/cupcake.jpg"
+                }
+            })
+
+    def test_delete_cupcake(self):
+        with app.test_client() as client:
+            url = f"/api/cupcakes/{self.cupcake.id}"
+            resp = client.delete(url)
+
+            data = resp.json
+
+            self.assertEqual(resp.status_code, 200)
+
+            self.assertEqual(data, {"deleted": self.cupcake.id})
+
+            self.assertEqual(Cupcake.query.count(), 0)
