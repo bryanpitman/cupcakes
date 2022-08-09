@@ -12,21 +12,21 @@
 <body>
     <h1>Cupcakes!</h1>
 
-    <ul id="cupcakes-list">
-    </ul>
-
     <form class="add-cupcake-form">
         <div class="d-flex justify-content-center">
-            <input id="flavor" name="flavor" placeholder="Enter a flavor" class="form-control me-2" />
+            <input type="text" id="flavor" name="flavor" placeholder="Enter a flavor" class="form-control me-2" required/>
 
-            <input id="size" name="size" placeholder="Enter a size" class="form-control me-2" />
+            <input type="text" id="size" name="size" placeholder="Enter a size" class="form-control me-2" required/>
 
-            <input id="rating" name="rating" placeholder="Enter a rating" class="form-control me-2" />
-            <input id="image" name="image" placeholder="Optional Image" class="form-control me-2" />
+            <input type="number" id="rating" name="rating" placeholder="Enter a rating" class="form-control me-2" required/>
+            <input type="url" id="image" name="image" placeholder="Optional Image" class="form-control me-2" />
 
             <input type="submit" class="btn btn-secondary" value="Add cupcake!" />
         </div>
     </form>
+
+    <ul id="cupcakes-list">
+    </ul>
 
     <script src="https://unpkg.com/jquery"></script>
     <script src="https://unpkg.com/axios/dist/axios.js"></script>

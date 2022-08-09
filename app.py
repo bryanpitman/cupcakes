@@ -40,7 +40,7 @@ def create_cupcake():
     flavor = request.json["flavor"]
     size = request.json["size"]
     rating = request.json["rating"]
-    image = request.json.get("image", None) #do this so that "" appears as None
+    image = request.json.get("image", None)
     # NOW you can skip the image in request without getting key error
 
     new_cupcake = Cupcake(flavor=flavor, size=size, rating=rating, image=image)

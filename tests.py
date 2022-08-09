@@ -49,6 +49,7 @@ class CupcakeViewsTestCase(TestCase):
         db.session.rollback()
 
     def test_list_cupcakes(self):
+        """ Test if cupcakes added to list are accurate """
         with app.test_client() as client:
             resp = client.get("/api/cupcakes")
 
@@ -69,6 +70,7 @@ class CupcakeViewsTestCase(TestCase):
             })
 
     def test_get_cupcake(self):
+        """ Test getting a specific cupcake """
         with app.test_client() as client:
             url = f"/api/cupcakes/{self.cupcake.id}"
             resp = client.get(url)
@@ -86,6 +88,7 @@ class CupcakeViewsTestCase(TestCase):
             })
 
     def test_create_cupcake(self):
+        """ Test creating a cupcake and adding it to database """
         with app.test_client() as client:
             url = "/api/cupcakes"
             resp = client.post(url, json=CUPCAKE_DATA_2)
@@ -110,6 +113,7 @@ class CupcakeViewsTestCase(TestCase):
             self.assertEqual(Cupcake.query.count(), 2)
 
     def test_patch_cupcake(self):
+        """ Test updating a cupcake """
         with app.test_client() as client:
             url = f"/api/cupcakes/{self.cupcake.id}"
             resp = client.patch(url,
@@ -131,6 +135,7 @@ class CupcakeViewsTestCase(TestCase):
             })
 
     def test_delete_cupcake(self):
+        """ Test deleting a cupcake """
         with app.test_client() as client:
             url = f"/api/cupcakes/{self.cupcake.id}"
             resp = client.delete(url)
